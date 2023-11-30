@@ -26,10 +26,14 @@ MaterialColor buildMaterialColor(Color color) {
 
 //buildMessage:
 void buildMessage({required BuildContext context,required String msg}){
-  ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(
-        content: Text(msg),
-      ));
+  var snackBar= SnackBar(
+    margin:  EdgeInsets.all(
+      AppSize.margin2(context)
+    ),
+    backgroundColor: AppColor.gray,
+    behavior: SnackBarBehavior.floating,
+    content: Text(msg,style: const TextStyle(color: AppColor.teal,fontWeight: FontWeight.bold),),);
+  ScaffoldMessenger. of(context). showSnackBar(snackBar);
 }
 
 //buildButton:
@@ -55,4 +59,23 @@ Widget buildButton({
   );
 }
 
-//buildDropDown:
+//
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
+      padding: EdgeInsets.symmetric(vertical: AppSize.padding2(context)),
+      child: const Center(
+        child: SizedBox(
+          height:50,
+          width: 60,
+          child: CircularProgressIndicator(
+            color: AppColor.red,
+          ),
+        ),
+      ),
+    );
+  }
+}
