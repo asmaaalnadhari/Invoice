@@ -4,13 +4,10 @@ part of 'add_invoice_cubit.dart';
 abstract class AddInvoiceState {}
 
 class AddInvoiceInitial extends AddInvoiceState {}
-
+///AddInvoiceStates:
 class AddInvoiceLoading extends AddInvoiceState {}
-
 class AddInvoiceSuccess extends AddInvoiceState {}
-
 class AddInvoiceFailure extends AddInvoiceState {}
-
 class AddInvoiceRow extends AddInvoiceState {}
 
 ///TextField:

@@ -13,10 +13,11 @@ class HeaderBillDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
-        decoration: const BoxDecoration(
-            color: AppColor.teal,
-            borderRadius: BorderRadius.only(
+        decoration:  BoxDecoration(
+            gradient: LinearGradient(
+              colors: [ AppColor.teal.withOpacity(0.7),AppColor.teal,], // Add your gradient colors
+            ),
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20)
                 ,bottomRight:   Radius.circular(20)
             )
@@ -29,13 +30,13 @@ class HeaderBillDetails extends StatelessWidget {
                 Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      buildHeaderItem(title: 'رقم الفاتورة', content: Text('#${invoiceModel.invoiceNumber}', style: titleFont.copyWith(fontSize: 20,),)),
+                      buildHeaderItem(title: 'رقم الفاتورة:', content: Text('#${invoiceModel.invoiceNumber}', style: titleFont.copyWith(fontSize: 20,),)),
                       const Divider(),
                       const SizedBox(height:5,),
-                      buildHeaderItem(title: 'العملة', content:Text('(${invoiceModel.coins})', style: titleFont.copyWith(fontSize: 20,),) ),
+                      buildHeaderItem(title: 'العملة:', content:Text('(${invoiceModel.coins})', style: titleFont.copyWith(fontSize: 20,),) ),
                       const Divider(),
                       const SizedBox(height: 10,),
-                      buildHeaderItem(title: 'تاريخ الفاتورة', content:Text('(${invoiceModel.invoiceDate})', style: titleFont.copyWith(fontSize: 20,),), ),
+                      buildHeaderItem(title: 'تاريخ الفاتورة:', content:Text('(${invoiceModel.invoiceDate})', style: titleFont.copyWith(fontSize: 20,),), ),
                       const Divider(),
                       const SizedBox(height: 10,),
                       buildHeaderItem(title: 'عدد الأصناف:   ', content:Text('(${BlocProvider.of<GetInvoiceCubit>(context).itemCounts})', style: titleFont.copyWith(fontSize: 20,),), ),

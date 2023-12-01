@@ -41,25 +41,40 @@ Widget buildButton({
   required VoidCallback onTap,
   required String label,
   required IconData icon,
-  required BuildContext context
+  required BuildContext context,
 }) {
   return Padding(
-    padding:  EdgeInsets.symmetric(vertical:AppSize.padding4(context)),
-    child: ElevatedButton.icon(
-      onPressed:onTap,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.teal,
-          side:const BorderSide(
-            color: AppColor.white,
-            width: 2,
-          )),
-      icon:  Icon(icon,color: AppColor.white,),
-      label:  Text(label,style: bodyFont.copyWith(color: AppColor.white),),
+    padding: EdgeInsets.all(AppSize.padding4(context)),
+    child: InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 60, // Adjust the height as needed
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColor.teal, AppColor.teal.withOpacity(0.6)], // Add your gradient colors
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding:  EdgeInsets.all(AppSize.padding4(context)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, color: AppColor.white),
+              const SizedBox(width: 8), // Adjust spacing between icon and label
+              Text(
+                label,
+                style: bodyFont.copyWith(color: AppColor.white),
+              ),
+            ],
+          ),
+        ),
+      ),
     ),
   );
 }
 
-//
+//LoadingWidget
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({Key? key}) : super(key: key);
 

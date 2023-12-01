@@ -10,10 +10,13 @@ part 'add_invoice_state.dart';
 //--------------------------------------------
 class AddInvoiceCubit extends Cubit<AddInvoiceState> {
   AddInvoiceCubit(this.repository) : super(AddInvoiceInitial());
+  ///variables:
   final HiveRepository repository;
   List<Map<String, TextEditingController>> tableData = [];
 //--------------------------------------------
-  Future<void> addInvoice({required InvoiceData invoiceData, required List<ItemData> items}) async {
+  ///addInvoice
+  Future<void> addInvoice({required InvoiceData invoiceData}) async
+  {
     emit(AddInvoiceLoading());
     print('\AddInvoiceLoading\n');
     List<ItemData> items = convertTableData(tableData);
@@ -22,20 +25,21 @@ class AddInvoiceCubit extends Cubit<AddInvoiceState> {
       repository.addInvoice(invoiceData).then((value)async{
         await repository.addItemsToInvoice(value, items);
       } );
-      // int invoiceId = await repository.addInvoice(invoiceData);
-      // await repository.addItemsToInvoice(invoiceId, items);
       print('\nAddInvoiceSuccess\n');
       CacheData.setData(key: 'idInvoice', value: CacheData.getData(key: 'idInvoice')+1);
       tableData.clear();
       clear();
+      invoiceNumber=await CacheData.getNextId();
       emit(AddInvoiceSuccess());
+
  } catch (e) {
       print('\nAddInvoiceFailure : ${e.toString()}\n');
       emit(AddInvoiceSuccess());
     }
   }
   ///01# addRow
-  void addRow() {
+  void addRow()
+  {
     tableData.add({
       'productName': TextEditingController(),
       'itemUnit': TextEditingController(),
@@ -46,7 +50,7 @@ class AddInvoiceCubit extends Cubit<AddInvoiceState> {
     emit(AddInvoiceRow());
   }
   ///chaneQuantity:
-void chaneQuantity()
+  void chaneQuantity()
   {
   emit(AddInvoiceQuantity());
 }
@@ -75,8 +79,8 @@ void chaneQuantity()
     }
     return items;
   }
-void clear()
-{
+  void clear()
+  {
    totalQuantity = 0;
    totalPrice = 0;
    totalValue = 0;

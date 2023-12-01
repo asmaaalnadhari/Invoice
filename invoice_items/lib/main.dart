@@ -4,6 +4,7 @@ import 'package:invoice_items/Core/global.dart';
 import 'package:invoice_items/Data/Repository/repository.dart';
 import 'package:invoice_items/Domain/cubit/add_invoice_cubit.dart';
 import 'package:invoice_items/Domain/cubit/getInvoiceData/get_invoice_cubit.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'Core/Shared/Components/components.dart';
 import 'Core/Shared/shared_preferences/shared_prefrences.dart';
 import 'Data/Model/InvoicesModel/InvoiceData.dart';
@@ -20,6 +21,8 @@ void main() async{
   await Hive.openBox<ItemData>(kItemBox);
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.cacheInitialization();
+ await CacheData.setData(key: 'idInvoice', value: 1);
+  invoiceNumber=await CacheData.getNextId();
   runApp(const MyApp());
 }
 
@@ -40,8 +43,16 @@ class MyApp extends StatelessWidget {
           primarySwatch: buildMaterialColor(AppColor.teal)
         ),
         debugShowCheckedModeBanner: false,
-        home:  const SafeArea(child:Directionality(textDirection:TextDirection.rtl ,
-        child: PageBills())),
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("ar"), // OR Locale('ar', 'AE') OR Other RTL locales
+        ],
+        locale: const Locale('ar'),
+        home:  const SafeArea(child:PageBills()),
       ),
     );
   }

@@ -17,7 +17,6 @@ Widget billWidget({required BuildContext context,required InvoiceData invoiceDat
       ),
     );
       BlocProvider.of<GetInvoiceCubit>(context).getItemsForInvoice(invoiceData.key);
-
     },
     child: Container(
       padding:  EdgeInsets.all(AppSize.padding2(context)),
@@ -43,7 +42,7 @@ Widget billWidget({required BuildContext context,required InvoiceData invoiceDat
                 children: [
                   Text('رقم الفاتورة : ${invoiceData.invoiceNumber}'),
                   Text('العملة : ${invoiceData.coins}'),
-                  Text('المبلغ : ${invoiceData.total}'),
+                  Text('المبلغ : ${invoiceData.total} '),
                 ],
               ),
               const Spacer(),

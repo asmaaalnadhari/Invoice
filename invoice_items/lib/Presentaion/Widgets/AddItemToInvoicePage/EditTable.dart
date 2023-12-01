@@ -22,9 +22,10 @@ class EditableTable extends StatelessWidget {
       }
     else if(state is AddInvoiceLoading)
     {
-      const LoadingWidget();
+      const CircularProgressIndicator();
     }
   },
+  ///builder:
   builder: (context, state) {
     AddInvoiceCubit cubit =BlocProvider.of<AddInvoiceCubit>(context);
     return Column(
@@ -33,23 +34,24 @@ class EditableTable extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: buildTable(context: context, cubit: cubit),
         ),
-        const Divider(thickness: 1,color: AppColor.black,),
+        const SizedBox(height: 5,),
+        const Divider(thickness: 3,color: AppColor.red,),
         SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child:buildTotals(
                 context: context)
         ),
-        const Divider(thickness: 1,color: AppColor.black,),
+        const Divider(thickness: 3,color: AppColor.red,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             buildButton(onTap: () {cubit.addRow();  }, label: 'اضف صنف', icon: Icons.add, context: context),
             buildButton(
                 onTap: () {
-                  bool istrue=validateAllRows( context: context, cubit: cubit);
-                if (istrue)
+                  bool isTrue=validateAllRows( context: context, cubit: cubit);
+                if (isTrue)
                 {
-                  cubit.addInvoice(invoiceData: InvoiceData(invoiceNumber: invoiceNumber, invoiceDate:DateFormat.yMMMd().format(DateTime.now()).toString(), coins: controlCoins.text, total: totalValue,), items: []);
+                  cubit.addInvoice(invoiceData: InvoiceData(invoiceNumber: invoiceNumber, invoiceDate:DateFormat.yMMMd().format(DateTime.now()).toString(), coins: controlCoins.text, total: totalValue,),);
                 }}, label: ' حفظ الأصناف', icon: Icons.save_alt, context: context),
           ],
         ),

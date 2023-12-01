@@ -10,8 +10,12 @@ const kItemBox = 'Item_box';
 const kInvoiceBox = 'Invoice_box';
 
 ///InvoiceInfo:
-int invoiceNumber=1;
+int invoiceNumber=0;
 
 ///TextEditingController:
 TextEditingController controlCoins= TextEditingController();
+
+///dropDown:
+List<String>coins=['دولار','ريال','سعودي',];
+List<String>itemUnits=['حبة','كرتون',];
 

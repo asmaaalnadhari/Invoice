@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_items/Core/global.dart';
 import '../../../Core/Utils/Style/Colors.dart';
 import '../../../Core/Utils/Style/TextStyle.dart';
 import '../../../Domain/cubit/add_invoice_cubit.dart';
@@ -36,7 +37,7 @@ DataRow buildDataRow(Map<String, TextEditingController> data,{required AddInvoic
       ),
       DataCell(
         BuildDropDown(hintText: 'الوحدة',
-          option: ['كرتون', 'حبة'],
+          option:itemUnits,
           controller: data['itemUnit']!,),
       ),
       DataCell(

@@ -24,4 +24,13 @@ class CacheData{
   {
     return sharedPreferences.get(key);
   }
+  static const String keyId = 'id';
+
+   static Future<int> getNextId() async {
+    int currentId = getData( key:keyId) ?? 0;
+    int nextId = currentId + 1;
+    setData(key: keyId, value: nextId);
+    return nextId;
+  }
+
 }

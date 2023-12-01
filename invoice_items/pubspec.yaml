@@ -16,6 +16,9 @@ dependencies:
   hive_flutter:
   flutter_bloc:
   shared_preferences:
+  printing:
+  pdf:
+  flutter_localization:
 #------------------------------------------
 dev_dependencies:
   flutter_test:

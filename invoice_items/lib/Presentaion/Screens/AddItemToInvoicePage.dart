@@ -11,23 +11,23 @@ class AddItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
+    return PopScope(
+      canPop:false,
       child: Scaffold(
+        ///appBar:
         appBar: AppBar(
-          leading:  BackButton(
-            onPressed:(){
+          leading: BackButton(
+            onPressed: () {
               Navigator.pop(context);
               BlocProvider.of<GetInvoiceCubit>(context).getAllInvoices();
-
-            } ,
-          )
-,
-          title:Text(
+            },
+          ),
+          title: Text(
             'إدخال فاتورة',
             style: titleFont.copyWith(fontWeight: FontWeight.w800),
           ),
         ),
+        ///body:
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,11 +36,11 @@ class AddItems extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(AppSize.padding2(context)),
                 child: Text(
-                  'اضف أصناف',
-                  style: titleFont,
+                  'اضف أصناف:',
+                  style: titleFont.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-               EditableTable()
+           EditableTable(),
             ],
           ),
         ),
@@ -48,3 +48,4 @@ class AddItems extends StatelessWidget {
     );
   }
 }
+

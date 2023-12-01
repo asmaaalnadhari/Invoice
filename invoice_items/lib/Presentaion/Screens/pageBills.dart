@@ -9,20 +9,20 @@ import 'package:invoice_items/Presentaion/Screens/AddItemToInvoicePage.dart';
 import '../Widgets/buildBils/FloatingAction.dart';
 import '../Widgets/buildBils/buildSingleItems.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class PageBills extends StatelessWidget {
   const PageBills({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      ///AppBar:
       appBar: AppBar(
         title: Text(
           ' سجل الفواتير ', style: titleFont.copyWith(color: AppColor.white),),
         centerTitle: true,
         backgroundColor: AppColor.teal,
-
       ),
+      ///body:
       body: BlocBuilder<GetInvoiceCubit, GetInvoiceState>(
         builder: (context, state) {
           if (state is GetAllInvoiceLoading) {
@@ -62,6 +62,7 @@ class PageBills extends StatelessWidget {
 
 
       ),
+      ///floatingActionButton:
       floatingActionButton:floatingActionButton(onTap: () {
             Navigator.of(context).push(
                 MaterialPageRoute(
