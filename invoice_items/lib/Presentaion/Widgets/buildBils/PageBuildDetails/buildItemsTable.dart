@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:invoice_items/Domain/cubit/add_invoice_cubit.dart';
-import '../../../Core/Utils/Style/Colors.dart';
-import '../../../Core/Utils/Style/TextStyle.dart';
-import 'buidDataRow.dart';
+import '../../../../Core/Utils/Style/Colors.dart';
+import '../../../../Core/Utils/Style/TextStyle.dart';
+import '../../../../Data/Model/ItemsModel/ItemData.dart';
+import 'buildDataRowItems.dart';
 
-///02#build Table:
-Widget buildTable({required BuildContext context,required AddInvoiceCubit cubit}) {
+Widget buildItemsTable({required BuildContext context,required List<ItemData> itemsTable})
+{
   return DataTable(
     border:  TableBorder.all(
         width: 2,
@@ -21,6 +21,6 @@ Widget buildTable({required BuildContext context,required AddInvoiceCubit cubit}
       DataColumn(label: Text('القيمة',style: titleFont)),
       DataColumn(label: Text('حذف',style: titleFont)),
     ],
-    rows: cubit.tableData.map((data) => buildDataRow(data, cubit: cubit)).toList(),
+    rows: itemsTable.map((data) => buildDataRowItems(itemModel: data)).toList(),
   );
 }

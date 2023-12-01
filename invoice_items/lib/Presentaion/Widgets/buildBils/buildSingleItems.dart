@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:invoice_items/Core/Utils/app_sizes.dart';
 import 'package:invoice_items/Data/Model/InvoicesModel/InvoiceData.dart';
+import 'package:invoice_items/Domain/cubit/getInvoiceData/get_invoice_cubit.dart';
+import 'package:invoice_items/Presentaion/Screens/PageBillDetails.dart';
 import '../../../Core/Utils/Style/Colors.dart';
 
 Widget billWidget({required BuildContext context,required InvoiceData invoiceData})
 {
   return InkWell(
-    onTap: () => Navigator.pushNamed(context, '/BillDetailsPage'),
+    onTap: () {
+      Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (_) =>  PageBillDetails(invoiceData: invoiceData,)
+      ),
+    );
+      BlocProvider.of<GetInvoiceCubit>(context).getItemsForInvoice(invoiceData.key);
+
+    },
     child: Container(
       padding:  EdgeInsets.all(AppSize.padding2(context)),
       decoration: BoxDecoration(

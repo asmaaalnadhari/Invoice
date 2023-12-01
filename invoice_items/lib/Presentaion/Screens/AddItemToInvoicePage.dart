@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:invoice_items/Core/Utils/Style/TextStyle.dart';
 import 'package:invoice_items/Core/Utils/app_sizes.dart';
+import 'package:invoice_items/Domain/cubit/getInvoiceData/get_invoice_cubit.dart';
 import '../Widgets/AddItemToInvoicePage/EditTable.dart';
 import '../Widgets/AddItemToInvoicePage/HeaderPage.dart';
 
@@ -13,6 +15,14 @@ class AddItems extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          leading:  BackButton(
+            onPressed:(){
+              Navigator.pop(context);
+              BlocProvider.of<GetInvoiceCubit>(context).getAllInvoices();
+
+            } ,
+          )
+,
           title:Text(
             'إدخال فاتورة',
             style: titleFont.copyWith(fontWeight: FontWeight.w800),

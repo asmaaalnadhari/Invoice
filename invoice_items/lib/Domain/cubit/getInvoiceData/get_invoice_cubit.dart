@@ -17,6 +17,7 @@ class GetInvoiceCubit extends Cubit<GetInvoiceState> {
     try {
       List<ItemData> items = await repository.getItemsForInvoice(invoiceId);
       emit(GetAllItemsOfInvoiceSuccess( itemsData:items));
+      print('\nGetAllItemsOfInvoiceSuccess}\n');
       itemCounts=items.length;
       return items;
     } catch (e) {
