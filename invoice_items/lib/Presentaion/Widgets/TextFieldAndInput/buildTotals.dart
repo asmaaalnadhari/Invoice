@@ -13,7 +13,7 @@ Widget buildTotals({
     Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('الإجمالي (ريال):', style: bodyFont,),
+        Text('الإجمالي :', style: bodyFont,),
         Padding(
           padding:  EdgeInsets.symmetric(horizontal: AppSize.padding20(context)),
           child: Text('-', style: bodyFont,),

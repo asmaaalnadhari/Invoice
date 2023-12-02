@@ -9,9 +9,6 @@ double totalValue = 0;
 const kItemBox = 'Item_box';
 const kInvoiceBox = 'Invoice_box';
 
-///InvoiceInfo:
-int invoiceNumber=0;
-
 ///TextEditingController:
 TextEditingController controlCoins= TextEditingController();
 

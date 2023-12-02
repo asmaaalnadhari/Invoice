@@ -13,7 +13,9 @@ class AddInvoiceCubit extends Cubit<AddInvoiceState> {
   ///variables:
   final HiveRepository repository;
   List<Map<String, TextEditingController>> tableData = [];
-//--------------------------------------------
+  ///InvoiceInfo:
+  int invoiceNumber=1;
+  //--------------------------------------------
   ///addInvoice
   Future<void> addInvoice({required InvoiceData invoiceData}) async
   {
@@ -22,14 +24,13 @@ class AddInvoiceCubit extends Cubit<AddInvoiceState> {
     List<ItemData> items = convertTableData(tableData);
     print('============Before Adding:==========invoiceData: $invoiceData\nItemData:$items');
     try {
+      invoiceNumber=await CacheData.getNextId();
       repository.addInvoice(invoiceData).then((value)async{
         await repository.addItemsToInvoice(value, items);
       } );
       print('\nAddInvoiceSuccess\n');
-      CacheData.setData(key: 'idInvoice', value: CacheData.getData(key: 'idInvoice')+1);
       tableData.clear();
       clear();
-      invoiceNumber=await CacheData.getNextId();
       emit(AddInvoiceSuccess());
 
  } catch (e) {

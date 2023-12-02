@@ -5,6 +5,7 @@ import 'package:invoice_items/Core/global.dart';
 import 'package:invoice_items/Data/Model/InvoicesModel/InvoiceData.dart';
 import 'package:invoice_items/Domain/cubit/add_invoice_cubit.dart';
 import '../../../Core/Shared/Components/components.dart';
+import '../../../Core/Shared/shared_preferences/shared_prefrences.dart';
 import '../TableItems/buildTable.dart';
 import '../TextFieldAndInput/ValidateInput.dart';
 import '../TextFieldAndInput/buildTotals.dart';
@@ -51,7 +52,7 @@ class EditableTable extends StatelessWidget {
                   bool isTrue=validateAllRows( context: context, cubit: cubit);
                 if (isTrue)
                 {
-                  cubit.addInvoice(invoiceData: InvoiceData(invoiceNumber: invoiceNumber, invoiceDate:DateFormat.yMMMd().format(DateTime.now()).toString(), coins: controlCoins.text, total: totalValue,),);
+                  cubit.addInvoice(invoiceData: InvoiceData(invoiceNumber: CacheData.getData( key:CacheData.keyId) ?? 1, invoiceDate:DateFormat.yMMMd().format(DateTime.now()).toString(), coins: controlCoins.text, total: totalValue,),);
                 }}, label: ' حفظ الأصناف', icon: Icons.save_alt, context: context),
           ],
         ),

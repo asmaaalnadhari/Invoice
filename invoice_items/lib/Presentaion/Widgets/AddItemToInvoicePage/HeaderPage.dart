@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_items/Core/Shared/shared_preferences/shared_prefrences.dart';
 import 'package:invoice_items/Core/Utils/Style/Colors.dart';
 import 'package:invoice_items/Core/Utils/Style/TextStyle.dart';
 import 'package:invoice_items/Core/Utils/app_sizes.dart';
@@ -32,7 +33,7 @@ class HeaderPage extends StatelessWidget {
               return  Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    buildHeaderItem(title: 'رقم الفاتورة:', content: Text('#$invoiceNumber', style: titleFont.copyWith(fontSize: 20,),)),
+                    buildHeaderItem(title: 'رقم الفاتورة:', content: Text('#${CacheData.getData( key:CacheData.keyId) ?? 1 }', style: titleFont.copyWith(fontSize: 20,),)),
                     const Divider(),
                     const SizedBox(height:5,),
                     buildHeaderItem(title: 'العملة:', content:BuildDropDown(hintText: 'العملة', option:coins, controller: controlCoins,) ),

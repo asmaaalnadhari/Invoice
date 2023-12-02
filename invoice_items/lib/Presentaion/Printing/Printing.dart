@@ -4,9 +4,8 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
-
 import '../../Data/Model/ItemsModel/ItemData.dart';
-
+//------------
 PdfColor white= const PdfColor.fromInt(0xFFFFFFFF);
 PdfColor teal = const PdfColor.fromInt(0xFF009688);
 PdfColor gray = const PdfColor.fromInt(0xFFB4B4B3);
@@ -117,109 +116,36 @@ pw.Container headerBuild({required InvoiceData invoice,required int quantity}){
   );
 }
 ///customTable:
-// pw.Table customTable({required List<ItemData> itemsData}) {
-//   const double cellPadding = 20.0; // Adjust the padding value as needed
-//       int i=0;
-//   // Function to generate the header row
-//   pw.TableRow buildHeaderRow() {
-//     return pw.TableRow(
-//       decoration: pw.BoxDecoration(color: teal),
-//       children: [
-//         pw.Padding(
-//           padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//           child: pw.Text('القيمة', style: pw.TextStyle(fontSize: sizeSubTitle)),
-//         ),
-//         pw.Padding(
-//           padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//           child: pw.Text('السعر', style: pw.TextStyle(fontSize: sizeSubTitle)),
-//         ),
-//         pw.Padding(
-//           padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//           child: pw.Text('الكمية', style: pw.TextStyle(fontSize: sizeSubTitle)),
-//         ),
-//         pw.Padding(
-//           padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//           child: pw.Text('الوحدة', style: pw.TextStyle(fontSize: sizeSubTitle)),
-//         ),
-//         pw.Padding(
-//           padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-//           child: pw.Text('اسم الصنف', style: pw.TextStyle(fontSize: sizeSubTitle)),
-//         ),
-//       ],
-//     );
-//   }
-//   return pw.Table(
-//     border: pw.TableBorder.all(
-//       color: gray,
-//       width: 2,
-//     ),
-//     columnWidths: {
-//       0: const pw.FlexColumnWidth(1),
-//       1: const pw.FlexColumnWidth(1),
-//       2: const pw.FlexColumnWidth(1),
-//       3: const pw.FlexColumnWidth(1),
-//       4: const pw.FlexColumnWidth(1),
-//     },
-//     children: [
-//       buildHeaderRow(), // Use the function to generate the header row
-//       for (var item in itemsData)
-//         pw.TableRow(
-//           children: [
-//             pw.Padding(
-//               padding: const pw.EdgeInsets.all(cellPadding),
-//               child: pw.Text(item.value.toString(), style: pw.TextStyle(fontSize: sizeBody)),
-//             ),
-//             pw.Padding(
-//               padding: const pw.EdgeInsets.all(cellPadding),
-//               child: pw.Text(item.itemPrice.toString(), style: pw.TextStyle(fontSize: sizeBody)),
-//             ),
-//             pw.Padding(
-//               padding: const pw.EdgeInsets.all(cellPadding),
-//               child: pw.Text(item.itemQuantity.toString(), style: pw.TextStyle(fontSize: sizeBody)),
-//             ),
-//             pw.Padding(
-//               padding: const pw.EdgeInsets.all(cellPadding),
-//               child: pw.Text(item.itemUnit, style: pw.TextStyle(fontSize: sizeBody)),
-//             ),
-//             pw.Padding(
-//               padding: const pw.EdgeInsets.all(cellPadding),
-//               child: pw.Text(item.productName, style: pw.TextStyle(fontSize: sizeBody)),
-//             ),
-//           ],
-//         ),
-//     ],
-//   );
-// }
 pw.Table customTable({required List<ItemData> itemsData}) {
   const double cellPadding = 20.0; // Adjust the padding value as needed
-
-  // Create the header row
-  final pw.TableRow headerRow = pw.TableRow(
-    decoration: pw.BoxDecoration(color: teal),
-    children: [
-      pw.Padding(
-        padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: pw.Text('القيمة', style: pw.TextStyle(fontSize: sizeSubTitle)),
-      ),
-      pw.Padding(
-        padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: pw.Text('السعر', style: pw.TextStyle(fontSize: sizeSubTitle)),
-      ),
-      pw.Padding(
-        padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: pw.Text('الكمية', style: pw.TextStyle(fontSize: sizeSubTitle)),
-      ),
-      pw.Padding(
-        padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: pw.Text('الوحدة', style: pw.TextStyle(fontSize: sizeSubTitle)),
-      ),
-      pw.Padding(
-        padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: pw.Text('اسم الصنف', style: pw.TextStyle(fontSize: sizeSubTitle)),
-      ),
-    ],
-  );
-
+  // Function to generate the header row
+  pw.TableRow buildHeaderRow() {
+    return pw.TableRow(
+      decoration: pw.BoxDecoration(color: teal),
+      children: [
+        pw.Padding(
+          padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: pw.Text('القيمة', style: pw.TextStyle(fontSize: sizeSubTitle)),
+        ),
+        pw.Padding(
+          padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: pw.Text('السعر', style: pw.TextStyle(fontSize: sizeSubTitle)),
+        ),
+        pw.Padding(
+          padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: pw.Text('الكمية', style: pw.TextStyle(fontSize: sizeSubTitle)),
+        ),
+        pw.Padding(
+          padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: pw.Text('الوحدة', style: pw.TextStyle(fontSize: sizeSubTitle)),
+        ),
+        pw.Padding(
+          padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: pw.Text('اسم الصنف', style: pw.TextStyle(fontSize: sizeSubTitle)),
+        ),
+      ],
+    );
+  }
   return pw.Table(
     border: pw.TableBorder.all(
       color: gray,
@@ -233,22 +159,30 @@ pw.Table customTable({required List<ItemData> itemsData}) {
       4: const pw.FlexColumnWidth(1),
     },
     children: [
-      headerRow, // Use the header row for the first row
+     buildHeaderRow(), // Use the function to generate the header row
       for (var item in itemsData)
         pw.TableRow(
           children: [
-            for (var i = 0; i < 5; i++)
-              pw.Padding(
-                padding: const pw.EdgeInsets.all(cellPadding),
-                child: pw.Text(
-                  i == 0 ? item.value.toString() :
-                  i == 1 ? item.itemPrice.toString() :
-                  i == 2 ? item.itemQuantity.toString() :
-                  i == 3 ? item.itemUnit :
-                  item.productName,
-                  style: pw.TextStyle(fontSize: sizeBody),
-                ),
-              ),
+            pw.Padding(
+              padding: const pw.EdgeInsets.all(cellPadding),
+              child: pw.Text(item.value.toString(), style: pw.TextStyle(fontSize: sizeBody)),
+            ),
+            pw.Padding(
+              padding: const pw.EdgeInsets.all(cellPadding),
+              child: pw.Text(item.itemPrice.toString(), style: pw.TextStyle(fontSize: sizeBody)),
+            ),
+            pw.Padding(
+              padding: const pw.EdgeInsets.all(cellPadding),
+              child: pw.Text(item.itemQuantity.toString(), style: pw.TextStyle(fontSize: sizeBody)),
+            ),
+            pw.Padding(
+              padding: const pw.EdgeInsets.all(cellPadding),
+              child: pw.Text(item.itemUnit, style: pw.TextStyle(fontSize: sizeBody)),
+            ),
+            pw.Padding(
+              padding: const pw.EdgeInsets.all(cellPadding),
+              child: pw.Text(item.productName, style: pw.TextStyle(fontSize: sizeBody)),
+            ),
           ],
         ),
     ],

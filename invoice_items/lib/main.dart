@@ -21,8 +21,6 @@ void main() async{
   await Hive.openBox<ItemData>(kItemBox);
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.cacheInitialization();
- await CacheData.setData(key: 'idInvoice', value: 1);
-  invoiceNumber=await CacheData.getNextId();
   runApp(const MyApp());
 }
 
